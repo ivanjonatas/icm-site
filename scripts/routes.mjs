@@ -21,6 +21,5 @@ for(const [route,title,description] of pages){
  const directory=route?'dist/'+route:'dist';await mkdir(directory,{recursive:true});await writeFile(directory+'/index.html',html);
  if(route==='404')await writeFile('dist/404.html',html);
 }
-await writeFile('dist/_redirects','/* /index.html 200\n');
 await writeFile('dist/robots.txt','User-agent: *\nDisallow: /\n');
 console.log('Prepared '+pages.length+' direct routes and a private-review robots policy.');
