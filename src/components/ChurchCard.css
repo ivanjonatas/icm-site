@@ -1,0 +1,120 @@
+.church-card.church-card--photo {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  padding: 0;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 6px;
+}
+
+.church-card--photo .church-card__figure {
+  flex-shrink: 0;
+  margin: 0;
+}
+
+.church-card--photo .church-card__photo-frame {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #edf1f4;
+}
+
+.church-card--photo .church-card__photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.church-card--photo .church-card__caption {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 0;
+  padding: 11px 20px 12px;
+  border-bottom: 1px solid var(--line, #dce1e5);
+  background: #f8fafb;
+  color: var(--muted, #56616e);
+  min-height: 96px;
+  box-sizing: border-box;
+}
+
+.church-card--photo .church-card__photo-label {
+  color: var(--navy, #12263a);
+  font-size: .73rem;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.church-card--photo .church-card__photo-credit {
+  font-size: .64rem;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.church-card--photo .church-card__photo-credit a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: #bdc7d0;
+  text-underline-offset: 2px;
+}
+
+.church-card--photo .church-card__photo-credit a:hover {
+  color: var(--red, #a61e32);
+}
+
+.church-card--photo .church-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+  padding: 25px;
+}
+
+.church-card--photo .church-card__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: auto;
+  padding-top: 20px;
+  min-width: 0;
+}
+
+.church-card--photo .church-card__actions > .text-link {
+  align-self: flex-start;
+}
+
+.church-card__instagram {display: inline-flex; align-items: center; gap: 9px; align-self: flex-start; max-width: 100%; color: var(--navy, #12263a); font-size: .8rem; font-weight: 600; line-height: 1.5; text-decoration: none;}
+.church-card__instagram span {min-width: 0; overflow-wrap: anywhere;}
+.church-card__instagram-icon {width: 22px; height: 22px; flex: 0 0 22px;}
+.church-card__instagram:hover {color: #b22a70; text-decoration: underline; text-underline-offset: 4px;}
+.church-card__instagram:focus-visible {outline: 2px solid #b22a70; outline-offset: 5px; border-radius: 2px;}
+.church-card__schedule-note {margin-block: 16px;}
+
+@media (max-width: 768px) {
+  .church-card--photo .church-card__body {
+    padding: 22px;
+  }
+
+  .church-card--photo .church-card__caption {
+    padding-inline: 18px;
+  }
+}
+
+@media (max-width: 580px) {
+  .church-card--photo .church-card__body {
+    padding: 24px;
+  }
+
+  .church-card--photo .church-card__photo-label {
+    font-size: .78rem;
+  }
+
+  .church-card--photo .church-card__photo-credit {
+    font-size: .69rem;
+  }
+}
+

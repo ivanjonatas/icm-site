@@ -1,0 +1,427 @@
+[
+  {
+    "churchId": "alenquer",
+    "municipalityId": "1101",
+    "locality": "Alenquer",
+    "point": [
+      154.28,
+      1228.57
+    ],
+    "precision": "street",
+    "coordinates": [
+      -9.0036212,
+      39.0510808
+    ],
+    "geocodedStreet": "Avenida 25 de Abril",
+    "osmRef": "W/1160070260",
+    "geocodedAt": "2026-10-18"
+  },
+  {
+    "churchId": "amadora",
+    "municipalityId": "1115",
+    "locality": "Amadora",
+    "point": [
+      90.25,
+      1347.58
+    ],
+    "precision": "street",
+    "coordinates": [
+      -9.2166975,
+      38.7428473
+    ],
+    "geocodedStreet": "Rua Maria Lamas",
+    "osmRef": "W/216270755",
+    "geocodedAt": "2026-10-18"
+  },
+  {
+    "churchId": "braga",
+    "municipalityId": "0303",
+    "locality": "Braga",
+    "point": [
+      325.07,
+      248.12
+    ],
+    "precision": "street",
+    "coordinates": [
+      -8.435236,
+      41.5392321
+    ],
+    "geocodedStreet": "Rua da Quinta de Santa Maria",
+    "osmRef": "W/108144689",
+    "geocodedAt": "2026-10-18"
+  },
+  {
+    "churchId": "caldas-da-rainha",
+    "municipalityId": "1006",
+    "locality": "Caldas da Rainha",
+    "point": [
+      112.82,
+      1091.17
+    ],
+    "precision": "street",
+    "coordinates": [
+      -9.1415868,
+      39.4052787
+    ],
+    "geocodedStreet": "Rua Manuel Mafra",
+    "osmRef": "W/658392039",
+    "geocodedAt": "2026-10-18"
+  },
+  {
+    "churchId": "carregado",
+    "municipalityId": "1101",
+    "locality": "Carregado",
+    "point": [
+      163.77,
+      1239.88
+    ],
+    "precision": "street",
+    "coordinates": [
+      -8.9720225,
+      39.021843
+    ],
+    "geocodedStreet": "Praceta João Golçalves Zarco",
+    "osmRef": "W/146477089",
+    "geocodedAt": "2026-10-18"
+  },
+  {
+    "churchId": "cartaxo",
+    "municipalityId": "1406",
+    "locality": "Cartaxo",
+    "point": [
+      219.57,
+      1185.64
+    ],
+    "precision": "locality",
+    "coordinates": [
+      -8.7863222,
+      39.1619462
+    ],
+    "geocodedStreet": "Cartaxo",
+    "osmRef": "R/5400567",
+    "geocodedAt": "2026-10-18"
+  },
+  {
+    "churchId": "coimbra",
+    "municipalityId": "0603",
+    "locality": "Coimbra",
+    "point": [
+      325.22,
+      779.58
+    ],
+    "precision": "address",
+    "coordinates": [
+      -8.4347524,
+      40.2018774
+    ],
+    "geocodedStreet": "Rua da Feitoria dos Linhos",
+    "osmRef": "N/11961989784",
+    "geocodedAt": "2026-10-18"
+  },
+  {
+    "churchId": "cruz-pau-amora",
+    "municipalityId": "1510",
+    "locality": "Amora",
+    "point": [
+      119.23,
+      1394.79
+    ],
+    "precision": "address",
+    "coordinates": [
+      -9.1202563,
+      38.6201883
+    ],
+    "geocodedStreet": "Rua do Minho",
+    "osmRef": "W/491811075",
+    "geocodedAt": "2026-10-18"
+  },
+  {
+    "churchId": "entroncamento",
+    "municipalityId": "1410",
+    "locality": "Entroncamento",
+    "point": [
+      313.29,
+      1069.9
+    ],
+    "precision": "street",
+    "coordinates": [
+      -8.4744572,
+      39.4599594
+    ],
+    "geocodedStreet": "Rua Dom Afonso Henriques",
+    "osmRef": "W/1487647067",
+    "geocodedAt": "2026-10-18"
+  },
+  {
+    "churchId": "estarreja",
+    "municipalityId": "0108",
+    "locality": "Estarreja",
+    "point": [
+      283.77,
+      561.25
+    ],
+    "precision": "street",
+    "coordinates": [
+      -8.5726866,
+      40.7545388
+    ],
+    "geocodedStreet": "Rua Dom Manuel I",
+    "osmRef": "W/134486108",
+    "geocodedAt": "2026-10-18"
+  },
+  {
+    "churchId": "evora",
+    "municipalityId": "0705",
+    "locality": "Évora",
+    "point": [
+      480.72,
+      1418.94
+    ],
+    "precision": "street",
+    "coordinates": [
+      -7.9172718,
+      38.5573827
+    ],
+    "geocodedStreet": "Rua Hermes da Fonseca Vermelho",
+    "osmRef": "W/147056454",
+    "geocodedAt": "2026-10-18"
+  },
+  {
+    "churchId": "famalicao",
+    "municipalityId": "0312",
+    "locality": "Ribeirão",
+    "point": [
+      289.82,
+      319.99
+    ],
+    "precision": "address",
+    "coordinates": [
+      -8.552536,
+      41.359941
+    ],
+    "geocodedStreet": "Rua Almeida Garrett",
+    "osmRef": "N/10293789258",
+    "geocodedAt": "2026-10-18"
+  },
+  {
+    "churchId": "faro",
+    "municipalityId": "0805",
+    "locality": "Faro",
+    "point": [
+      476.4,
+      1999.25
+    ],
+    "precision": "street",
+    "coordinates": [
+      -7.9316367,
+      37.0314135
+    ],
+    "geocodedStreet": "Rua do Alportel",
+    "osmRef": "W/897733421",
+    "geocodedAt": "2026-10-18"
+  },
+  {
+    "churchId": "leiria",
+    "municipalityId": "1009",
+    "locality": "Leiria",
+    "point": [
+      209.13,
+      955.22
+    ],
+    "precision": "address",
+    "coordinates": [
+      -8.8210793,
+      39.753973
+    ],
+    "geocodedStreet": "Rua António do Espírito Santo",
+    "osmRef": "W/192010140",
+    "geocodedAt": "2026-10-18"
+  },
+  {
+    "churchId": "lisboa",
+    "municipalityId": "1106",
+    "locality": "Lisboa",
+    "point": [
+      111.46,
+      1346.87
+    ],
+    "precision": "street",
+    "coordinates": [
+      -9.1461099,
+      38.7446742
+    ],
+    "geocodedStreet": "Rua Chaby Pinheiro",
+    "osmRef": "W/178231860",
+    "geocodedAt": "2026-10-18"
+  },
+  {
+    "churchId": "maanaim-de-portugal",
+    "municipalityId": "1114",
+    "locality": "Póvoa de Santa Iria",
+    "point": [
+      131.33,
+      1302.13
+    ],
+    "precision": "street",
+    "coordinates": [
+      -9.0799915,
+      38.8607018
+    ],
+    "geocodedStreet": "Avenida do Casal da Serra",
+    "osmRef": "W/1337997959",
+    "geocodedAt": "2026-10-18"
+  },
+  {
+    "churchId": "mafra",
+    "municipalityId": "1109",
+    "locality": "Mafra",
+    "point": [
+      55.2,
+      1271.7
+    ],
+    "precision": "street",
+    "coordinates": [
+      -9.3333394,
+      38.9395174
+    ],
+    "geocodedStreet": "Rua Ferreira de Castro",
+    "osmRef": "W/27258114",
+    "geocodedAt": "2026-10-18"
+  },
+  {
+    "churchId": "maia",
+    "municipalityId": "1306",
+    "locality": "Águas Santas",
+    "point": [
+      287.59,
+      383.15
+    ],
+    "precision": "street",
+    "coordinates": [
+      -8.5599747,
+      41.2020051
+    ],
+    "geocodedStreet": "Rua Abel Salazar",
+    "osmRef": "W/933037216",
+    "geocodedAt": "2026-10-18"
+  },
+  {
+    "churchId": "montijo",
+    "municipalityId": "1507",
+    "locality": "Montijo",
+    "point": [
+      166.14,
+      1362.87
+    ],
+    "precision": "street",
+    "coordinates": [
+      -8.9641531,
+      38.7031562
+    ],
+    "geocodedStreet": "Rua José Joaquim Marques",
+    "osmRef": "W/436857819",
+    "geocodedAt": "2026-10-18"
+  },
+  {
+    "churchId": "odivelas",
+    "municipalityId": "1116",
+    "locality": "Odivelas",
+    "point": [
+      102.6,
+      1327.43
+    ],
+    "precision": "street",
+    "coordinates": [
+      -9.1755983,
+      38.7951252
+    ],
+    "geocodedStreet": "Largo Elina Guimarães",
+    "osmRef": "W/825397667",
+    "geocodedAt": "2026-10-18"
+  },
+  {
+    "churchId": "portimao",
+    "municipalityId": "0811",
+    "locality": "Portimão",
+    "point": [
+      292.79,
+      1958.62
+    ],
+    "precision": "street",
+    "coordinates": [
+      -8.5426612,
+      37.1392722
+    ],
+    "geocodedStreet": "Avenida São João de Deus",
+    "osmRef": "W/1188480591",
+    "geocodedAt": "2026-10-18"
+  },
+  {
+    "churchId": "porto",
+    "municipalityId": "1312",
+    "locality": "Porto",
+    "point": [
+      279.39,
+      396.32
+    ],
+    "precision": "street",
+    "coordinates": [
+      -8.5872649,
+      41.1690259
+    ],
+    "geocodedStreet": "Rua de Contumil",
+    "osmRef": "W/549454262",
+    "geocodedAt": "2026-10-18"
+  },
+  {
+    "churchId": "queluz",
+    "municipalityId": "1111",
+    "locality": "Queluz",
+    "point": [
+      78.22,
+      1343.03
+    ],
+    "precision": "street",
+    "coordinates": [
+      -9.2567255,
+      38.7546467
+    ],
+    "geocodedStreet": "Rua Óscar Monteiro Torres",
+    "osmRef": "W/37264210",
+    "geocodedAt": "2026-10-18"
+  },
+  {
+    "churchId": "setubal",
+    "municipalityId": "1512",
+    "locality": "Setúbal",
+    "point": [
+      189.75,
+      1430.86
+    ],
+    "precision": "address",
+    "coordinates": [
+      -8.885561,
+      38.526361
+    ],
+    "geocodedStreet": "Rua José Pedro Da Silva",
+    "osmRef": "N/11283745281",
+    "geocodedAt": "2026-10-18"
+  },
+  {
+    "churchId": "viseu",
+    "municipalityId": "1823",
+    "locality": "Viseu",
+    "point": [
+      483.65,
+      610.06
+    ],
+    "precision": "venue",
+    "coordinates": [
+      -7.907500000000001,
+      40.63138888888889
+    ],
+    "geocodedStreet": "Rua Príncipe Perfeito · Montebelo Príncipe Perfeito Viseu Garden Hotel",
+    "coordinateSource": "https://montebelohotels.com/montebelo-principe-perfeito-viseu/en/contacts",
+    "geocodedAt": "2026-10-19"
+  }
+]
