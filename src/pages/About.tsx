@@ -8,8 +8,6 @@ import {
   Link,
   Icon,
 } from '../components/ui';
-import {Invite} from '../components/layout';
-
 const faith = [
   [
     'Deus Pai, Filho e Espírito Santo',
@@ -863,7 +861,7 @@ export function About() {
         </div>
       </div>
 
-      <Invite />
+      
     </div>
   );
 }

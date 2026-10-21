@@ -1,6 +1,6 @@
 import React, {useEffect, useId, useRef, useState} from 'react';
 import {navigation, institutionalUrl} from '../data';
-import {Icon, Link, External, Action, Eyebrow} from './ui';
+import {Icon, Link, External} from './ui';
 import './HeaderFooter.css';
 type Network = 'instagram' | 'youtube';
 
@@ -170,16 +170,16 @@ function PortugalFlag() {
   );
 }
 
-export function Brand({white = false}: {white?: boolean}) {
+export function Brand({white = false, showCountry = true}: {white?: boolean; showCountry?: boolean}) {
   return (
     <Link href="/" className={`brand${white ? ' brand--white' : ''}`}
       aria-label="Igreja Cristã Maranata em Portugal — Início">
       <img className="brand__logo" src="/images/logo-icm.svg"
         width="1023" height="288" alt="Igreja Cristã Maranata" />
-      <span className="brand__country">
+      {showCountry && <span className="brand__country">
         <PortugalFlag />
         <span className="brand__country-name">Portugal</span>
-      </span>
+      </span>}
     </Link>
   );
 }
@@ -208,16 +208,9 @@ export function Header({path}: {path: string}) {
 
   return (
     <>
-      <div className="utility">
-        <div className="container">
-          <span>A paz do Senhor Jesus!</span>
-          <SocialChannels />
-        </div>
-      </div>
-
       <header className="site-header">
         <div className="container header-inner">
-          <Brand />
+          <Brand showCountry={false} />
           <nav aria-label="Navegação principal" className="desktop-nav">
             {navigation.filter(n => !['/', '/igrejas'].includes(n.href)).map(n => (
               <Link key={n.href} href={n.href}
@@ -271,7 +264,10 @@ export function Header({path}: {path: string}) {
 
 export function Footer() {
   return (
+    <>
+    <div className="footer-wood" aria-hidden="true" />
     <footer className="site-footer">
+      <div className="footer-social utility"><div className="container"><SocialChannels /></div></div>
       <div className="container footer-grid">
         <div className="footer-intro">
           <Brand white />
@@ -311,20 +307,6 @@ export function Footer() {
         }}>Voltar ao topo ↑</a>
       </div>
     </footer>
+    </>
   );
 }
-
-export function Invite() {
-  return (
-    <section className="invite">
-      <div className="container invite-inner">
-        <div>
-          <Eyebrow light>Venha conhecer-nos</Eyebrow>
-          <h2>Há um lugar para si.<br />Será um gosto recebê-lo.</h2>
-        </div>
-        <Action href="/igrejas" light>Encontrar uma igreja</Action>
-      </div>
-    </section>
-  );
-}
-

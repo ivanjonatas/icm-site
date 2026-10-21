@@ -396,7 +396,7 @@ export default function ChurchMap({visibleChurchIds}: {visibleChurchIds?: string
       <div className="container">
         <div className="church-map-intro">
           <div><span className="eyebrow">A nossa presença em Portugal</span><h2 id={titleId}>Encontre-nos no mapa.</h2></div>
-          <p>Descubra as localidades onde estamos presentes. Selecione um marcador para conhecer a igreja e obter direções.</p>
+
         </div>
         <div className="church-map-shell" ref={mapTop}>
           <div className="church-map-toolbar">

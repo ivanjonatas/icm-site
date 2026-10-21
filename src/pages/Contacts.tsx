@@ -1,8 +1,6 @@
 import React, {useId, useState} from 'react';
-import {churches, institutionalUrl} from '../data';
-import {PageIntro, Icon, Eyebrow, Action, External} from '../components/ui';
-import {Invite} from '../components/layout';
-
+import {churches} from '../data';
+import {Icon, Eyebrow} from '../components/ui';
 const styles = `
 .contacts-instagram{background:var(--light,#f5f6f7)}
 .contacts-instagram__heading{max-width:760px;margin-bottom:32px}
@@ -51,36 +49,6 @@ export function Contacts(){
 
   return <>
     <style>{styles}</style>
-    <PageIntro label="Contactos" title="A sua visita começa com uma conversa.">
-      Encontre a congregação que pretende visitar e conheça os canais disponíveis em Portugal.
-    </PageIntro>
-
-    <section className="section"><div className="container contact-grid">
-      <div className="contact-primary">
-        <span className="contact-icon"><Icon name="pin"/></span>
-        <Eyebrow>Visitar uma igreja</Eyebrow>
-        <h2>Vamos encontrar<br/>uma igreja perto de si.</h2>
-        <p>Consulte as moradas e os horários publicados para cada igreja. Para mais informações sobre a congregação que pretende visitar, encontre o respetivo Instagram abaixo.</p>
-        <Action href="/igrejas">Encontrar uma igreja</Action>
-      </div>
-      <div>
-        <article className="contact-row">
-          <Eyebrow>Evangelização em Portugal</Eyebrow>
-          <h2>Evangelho Sem Fronteiras</h2>
-          <p>Acompanhe a iniciativa e utilize o canal indicado pelo ESF Portugal para questões relacionadas com os seus encontros.</p>
-          <External href="https://www.instagram.com/esf_portugal/" className="text-link">@esf_portugal no Instagram</External>
-          <External href="https://esf.pt/" className="text-link">Visitar o portal ESF Portugal</External>
-        </article>
-        <article className="contact-row">
-          <Eyebrow>Informação institucional</Eyebrow>
-          <h2>Conhecer melhor a ICM</h2>
-          <p>Encontre informação sobre a igreja, a sua história e a Declaração de Fé no portal institucional.</p>
-          <External href={institutionalUrl} className="text-link">Portal institucional da ICM</External>
-        </article>
-        <p className="small-note">O contacto central da ICM em Portugal será apresentado após confirmação institucional.</p>
-      </div>
-    </div></section>
-
     <section className="section contacts-instagram" aria-labelledby="church-instagrams-title">
       <div className="container">
         <div className="contacts-instagram__heading">
@@ -117,6 +85,6 @@ export function Contacts(){
         <p className="contacts-instagram__note">Esta lista apresenta as igrejas com perfil de Instagram disponível no nosso diretório. Para consultar todas as congregações, incluindo as que não têm perfil indicado, utilize a página “Igrejas em Portugal”.</p>
       </div>
     </section>
-    <Invite/>
+    
   </>;
 }

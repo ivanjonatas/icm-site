@@ -557,3 +557,34 @@
 }
 
 
+
+/* Acabamento decorativo do rodapé. */
+.footer-wood {
+  height: 64px;
+  background: url('/images/footer-madeira-original.webp') repeat-x center;
+  background-size: auto 64px;
+  border: 0;
+  box-shadow: none;
+}
+.site-footer .footer-social.utility { background: transparent; }
+.site-footer .footer-social > .container {
+  justify-content: flex-end;
+  min-height: 48px;
+  padding-bottom: 30px;
+}
+.site-header .header-inner { min-height: 96px; }
+@media (min-width: 581px) {
+  .hero { min-height: max(620px, calc(100svh - 96px)); }
+}
+@media (max-width: 700px) {
+  .footer-wood { height: 46px; background-size: auto 46px; }
+  .site-footer .footer-social > .container { justify-content: flex-start; padding-bottom: 24px; }
+}
+.site-header .header-inner {
+  height: 96px;
+  min-height: 96px;
+}
+
+main > .hero {
+  min-height: calc(100svh - 97px);
+}
