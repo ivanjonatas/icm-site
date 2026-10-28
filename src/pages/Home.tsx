@@ -207,12 +207,6 @@ export function Home() {
               <Eyebrow>A sua primeira visita</Eyebrow>
               <h2>Passo a passo.</h2>
             </div>
-
-            <p>
-              Encontre o caminho, consulte os horários
-              <br className="desktop-break" /> e sinta-se à
-              vontade para nos visitar.
-            </p>
           </div>
 
           <div className="visit-steps">
