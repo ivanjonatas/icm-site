@@ -1,11 +1,11 @@
 import React, {useLayoutEffect, useState} from 'react';
 import {news, resources} from '../data';
+import {HeroIntro} from '../components/HeroIntro';
 
 import {
   Icon,
   Link,
   External,
-  Action,
   Photo,
   Eyebrow,
   Empty,
@@ -24,18 +24,24 @@ export function SearchForm({
 }) {
   const [q, setQ] = useState('');
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  function handleSubmit(
+    event: React.FormEvent<HTMLFormElement>
+  ) {
     event.preventDefault();
 
     const query = q.trim();
 
     navigate(
       '/igrejas' +
-        (query ? '?q=' + encodeURIComponent(query) : '')
+        (query
+          ? '?q=' + encodeURIComponent(query)
+          : '')
     );
   }
 
-  const inputId = compact ? 'home-search' : 'find-search';
+  const inputId = compact
+    ? 'home-search'
+    : 'find-search';
 
   return (
     <form
@@ -116,14 +122,24 @@ export function Home() {
 
     updateHeaderHeight();
 
-    const observer = new ResizeObserver(updateHeaderHeight);
+    const observer = new ResizeObserver(
+      updateHeaderHeight
+    );
 
     observer.observe(header);
-    window.addEventListener('resize', updateHeaderHeight);
+
+    window.addEventListener(
+      'resize',
+      updateHeaderHeight
+    );
 
     return () => {
       observer.disconnect();
-      window.removeEventListener('resize', updateHeaderHeight);
+
+      window.removeEventListener(
+        'resize',
+        updateHeaderHeight
+      );
     };
   }, []);
 
@@ -144,24 +160,7 @@ export function Home() {
 
         <div className="hero-shade" />
 
-        <div className="container hero-content">
-          <h1>
-            MARANATA
-            <br />
-            <span>
-              O SENHOR JESUS
-              <br className="mobile-break" /> VEM!
-            </span>
-          </h1>
-
-          <p>Anunciando o Evangelho Eterno.</p>
-
-          <div className="hero-actions">
-            <Action href="/igrejas">
-              Encontre uma igreja mais perto de si
-            </Action>
-          </div>
-        </div>
+        <HeroIntro />
       </section>
 
       <section className="section welcome">
@@ -192,7 +191,10 @@ export function Home() {
               um momento de culto e comunhão.
             </p>
 
-            <Link className="text-link" href="/a-igreja">
+            <Link
+              className="text-link"
+              href="/a-igreja"
+            >
               Conheça a nossa igreja
               <Icon name="arrow" />
             </Link>
@@ -217,6 +219,7 @@ export function Home() {
                 </span>
 
                 <h3>{step.title}</h3>
+
                 <p>{step.text}</p>
 
                 <Link
@@ -265,7 +268,9 @@ export function Home() {
 
             <External href="https://esf.pt/">
               <Icon name="globe" />
-              <span>Partilhar o Evangelho em Portugal</span>
+              <span>
+                Partilhar o Evangelho em Portugal
+              </span>
             </External>
           </div>
         </div>
@@ -279,7 +284,10 @@ export function Home() {
               <h2>Os próximos encontros.</h2>
             </div>
 
-            <Link className="text-link" href="/agenda">
+            <Link
+              className="text-link"
+              href="/agenda"
+            >
               Consultar a agenda
               <Icon name="arrow" />
             </Link>
@@ -300,7 +308,10 @@ export function Home() {
               <h2>Histórias de fé e comunhão.</h2>
             </div>
 
-            <Link href="/noticias" className="text-link">
+            <Link
+              href="/noticias"
+              className="text-link"
+            >
               Todas as notícias
               <Icon name="arrow" />
             </Link>
@@ -308,7 +319,10 @@ export function Home() {
 
           <div className="home-news">
             {news[0] && (
-              <NewsCard article={news[0]} featured />
+              <NewsCard
+                article={news[0]}
+                featured
+              />
             )}
 
             <div className="secondary-news">
@@ -331,7 +345,10 @@ export function Home() {
               <h2>A Palavra acompanha-o.</h2>
             </div>
 
-            <Link href="/conteudos" className="text-link">
+            <Link
+              href="/conteudos"
+              className="text-link"
+            >
               Explorar conteúdos
               <Icon name="arrow" />
             </Link>
