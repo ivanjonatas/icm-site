@@ -916,3 +916,8 @@
     scroll-behavior: auto !important;
   }
 }
+@media (hover: none) {
+  .map-municipality.has-church.is-selected {
+    fill: #d52840;
+  }
+}

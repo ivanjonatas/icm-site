@@ -907,6 +907,11 @@ function MapPanel({
                 hasChurch && hoveredZone === area.zone
                   ? ' is-hovered'
                   : ''
+              ) +
+              (
+                selectedId !== null && area.churches.includes(selectedId)
+                  ? ' is-selected'
+                  : ''
               )
             }
             onPointerEnter={event => {
@@ -935,7 +940,7 @@ function MapPanel({
         );
       })}
     </g>
-  ), [areas, hoveredZone, onHover, choose]);
+  ), [areas, hoveredZone, selectedId, onHover, choose]);
 
   const labels = (() => {
     const width = box[2] * scale;
