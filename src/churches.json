@@ -5,26 +5,11 @@
     "address": "Av. 25 de Abril 106, 2580-372 Alenquer",
     "region": "Lisboa e Vale do Tejo",
     "schedule": [
-      {
-        "day": "Domingo · EBD",
-        "time": "10h30"
-      },
-      {
-        "day": "Domingo",
-        "time": "19h"
-      },
-      {
-        "day": "Quarta-feira",
-        "time": "20h"
-      },
-      {
-        "day": "Quinta-feira",
-        "time": "20h"
-      },
-      {
-        "day": "Sábado",
-        "time": "19h"
-      }
+      { "day": "Domingo · EBD", "time": "10h30" },
+      { "day": "Domingo", "time": "19h" },
+      { "day": "Quarta-feira", "time": "20h" },
+      { "day": "Quinta-feira", "time": "20h" },
+      { "day": "Sábado", "time": "19h" }
     ],
     "source": "https://www.igrejacristamaranata.org.br/enderecos-no-exterior/#local_exterior-portugal",
     "verifiedAt": "2026-10-18",
@@ -36,26 +21,11 @@
     "address": "R. Duarte Pacheco Pereira 2E, Damaia, 2720-212 Amadora",
     "region": "Lisboa e Vale do Tejo",
     "schedule": [
-      {
-        "day": "Domingo · EBD",
-        "time": "10h30"
-      },
-      {
-        "day": "Domingo",
-        "time": "19h"
-      },
-      {
-        "day": "Quarta-feira",
-        "time": "20h"
-      },
-      {
-        "day": "Quinta-feira",
-        "time": "20h"
-      },
-      {
-        "day": "Sábado",
-        "time": "19h"
-      }
+      { "day": "Domingo · EBD", "time": "10h30" },
+      { "day": "Domingo", "time": "19h" },
+      { "day": "Quarta-feira", "time": "20h" },
+      { "day": "Quinta-feira", "time": "20h" },
+      { "day": "Sábado", "time": "19h" }
     ],
     "source": "https://www.igrejacristamaranata.org.br/enderecos-no-exterior/#local_exterior-portugal",
     "verifiedAt": "2026-10-18",
@@ -67,26 +37,11 @@
     "address": "R. da Quinta de Santa Maria N° 117, 4700-244 Braga",
     "region": "Norte",
     "schedule": [
-      {
-        "day": "Domingo · EBD",
-        "time": "10h30"
-      },
-      {
-        "day": "Domingo",
-        "time": "19h00"
-      },
-      {
-        "day": "Quarta-feira",
-        "time": "20h"
-      },
-      {
-        "day": "Quinta-feira",
-        "time": "20h"
-      },
-      {
-        "day": "Sábado",
-        "time": "19h00"
-      }
+      { "day": "Domingo · EBD", "time": "10h30" },
+      { "day": "Domingo", "time": "19h00" },
+      { "day": "Quarta-feira", "time": "20h" },
+      { "day": "Quinta-feira", "time": "20h" },
+      { "day": "Sábado", "time": "19h00" }
     ],
     "source": "https://www.igrejacristamaranata.org.br/enderecos-no-exterior/#local_exterior-portugal",
     "verifiedAt": "2026-10-18"
@@ -97,26 +52,11 @@
     "address": "R. Manuel Mafra 22A, 2500-852 Caldas da Rainha",
     "region": "Centro",
     "schedule": [
-      {
-        "day": "Domingo · EBD",
-        "time": "10h30"
-      },
-      {
-        "day": "Domingo",
-        "time": "19h"
-      },
-      {
-        "day": "Quarta-feira",
-        "time": "20h"
-      },
-      {
-        "day": "Quinta-feira",
-        "time": "20h"
-      },
-      {
-        "day": "Sábado",
-        "time": "19h"
-      }
+      { "day": "Domingo · EBD", "time": "10h30" },
+      { "day": "Domingo", "time": "19h" },
+      { "day": "Quarta-feira", "time": "20h" },
+      { "day": "Quinta-feira", "time": "20h" },
+      { "day": "Sábado", "time": "19h" }
     ],
     "source": "https://www.igrejacristamaranata.org.br/enderecos-no-exterior/#local_exterior-portugal",
     "verifiedAt": "2026-10-18",
@@ -128,34 +68,13 @@
     "address": "Praceta João Gonçalves Zarco,  50 – C/V D – 2580-484",
     "region": "Lisboa e Vale do Tejo",
     "schedule": [
-      {
-        "day": "Domingo · EBD",
-        "time": "10h30"
-      },
-      {
-        "day": "Domingo",
-        "time": "19h00"
-      },
-      {
-        "day": "Segunda-feira",
-        "time": "20h"
-      },
-      {
-        "day": "Terça-feira",
-        "time": "via Zoom"
-      },
-      {
-        "day": "Quarta-feira",
-        "time": "20h"
-      },
-      {
-        "day": "Quinta-feira",
-        "time": "20h"
-      },
-      {
-        "day": "Sábado",
-        "time": "19h00"
-      }
+      { "day": "Domingo · EBD", "time": "10h30" },
+      { "day": "Domingo", "time": "19h00" },
+      { "day": "Segunda-feira", "time": "20h" },
+      { "day": "Terça-feira", "time": "via Zoom" },
+      { "day": "Quarta-feira", "time": "20h" },
+      { "day": "Quinta-feira", "time": "20h" },
+      { "day": "Sábado", "time": "19h00" }
     ],
     "source": "https://www.igrejacristamaranata.org.br/enderecos-no-exterior/#local_exterior-portugal",
     "verifiedAt": "2026-10-18",
@@ -167,26 +86,11 @@
     "address": "Rua Dr. Manuel Gomes da Silva 8 A, 2070-096 Cartaxo",
     "region": "Lisboa e Vale do Tejo",
     "schedule": [
-      {
-        "day": "Domingo · EBD",
-        "time": "10h30"
-      },
-      {
-        "day": "Domingo",
-        "time": "19h00"
-      },
-      {
-        "day": "Quarta-feira",
-        "time": "20h"
-      },
-      {
-        "day": "Quinta-feira",
-        "time": "20h"
-      },
-      {
-        "day": "Sábado",
-        "time": "19h00"
-      }
+      { "day": "Domingo · EBD", "time": "10h30" },
+      { "day": "Domingo", "time": "19h00" },
+      { "day": "Quarta-feira", "time": "20h" },
+      { "day": "Quinta-feira", "time": "20h" },
+      { "day": "Sábado", "time": "19h00" }
     ],
     "source": "https://www.igrejacristamaranata.org.br/enderecos-no-exterior/#local_exterior-portugal",
     "verifiedAt": "2026-10-18",
@@ -198,22 +102,10 @@
     "address": "R. Feitoria dos Linhos 17, 3040-252 Coimbra",
     "region": "Centro",
     "schedule": [
-      {
-        "day": "Domingo · EBD",
-        "time": "10h30"
-      },
-      {
-        "day": "Domingo",
-        "time": "19h"
-      },
-      {
-        "day": "Quarta-feira",
-        "time": "via Zoom"
-      },
-      {
-        "day": "Sábado",
-        "time": "19h"
-      }
+      { "day": "Domingo · EBD", "time": "10h30" },
+      { "day": "Domingo", "time": "19h" },
+      { "day": "Quarta-feira", "time": "via Zoom" },
+      { "day": "Sábado", "time": "19h" }
     ],
     "source": "https://www.igrejacristamaranata.org.br/enderecos-no-exterior/#local_exterior-portugal",
     "verifiedAt": "2026-10-18"
@@ -224,26 +116,11 @@
     "address": "Rua do Minho, 4 C - R/C – 2845-582",
     "region": "Lisboa e Vale do Tejo",
     "schedule": [
-      {
-        "day": "Domingo · EBD",
-        "time": "10h30"
-      },
-      {
-        "day": "Domingo",
-        "time": "19h00"
-      },
-      {
-        "day": "Quarta-feira",
-        "time": "20h"
-      },
-      {
-        "day": "Quinta-feira",
-        "time": "20h"
-      },
-      {
-        "day": "Sábado",
-        "time": "19h00"
-      }
+      { "day": "Domingo · EBD", "time": "10h30" },
+      { "day": "Domingo", "time": "19h00" },
+      { "day": "Quarta-feira", "time": "20h" },
+      { "day": "Quinta-feira", "time": "20h" },
+      { "day": "Sábado", "time": "19h00" }
     ],
     "source": "https://www.igrejacristamaranata.org.br/enderecos-no-exterior/#local_exterior-portugal",
     "verifiedAt": "2026-10-18",
@@ -255,26 +132,11 @@
     "address": "R. Dom Afonso Henriques 97, 2330-137 Entroncamento",
     "region": "Centro",
     "schedule": [
-      {
-        "day": "Domingo · EBD",
-        "time": "10h30"
-      },
-      {
-        "day": "Domingo",
-        "time": "19h"
-      },
-      {
-        "day": "Quarta-feira",
-        "time": "20h"
-      },
-      {
-        "day": "Quinta-feira",
-        "time": "20h"
-      },
-      {
-        "day": "Sábado",
-        "time": "19h"
-      }
+      { "day": "Domingo · EBD", "time": "10h30" },
+      { "day": "Domingo", "time": "19h" },
+      { "day": "Quarta-feira", "time": "20h" },
+      { "day": "Quinta-feira", "time": "20h" },
+      { "day": "Sábado", "time": "19h" }
     ],
     "source": "https://www.igrejacristamaranata.org.br/enderecos-no-exterior/#local_exterior-portugal",
     "verifiedAt": "2026-10-18",
@@ -286,26 +148,11 @@
     "address": "Rua Dom Manuel I nº85, 3860-366 - Estarreja",
     "region": "Centro",
     "schedule": [
-      {
-        "day": "Domingo · EBD",
-        "time": "10h30"
-      },
-      {
-        "day": "Domingo",
-        "time": "19h"
-      },
-      {
-        "day": "Quarta-feira",
-        "time": "20h"
-      },
-      {
-        "day": "Quinta-feira",
-        "time": "20h"
-      },
-      {
-        "day": "Sábado",
-        "time": "19h"
-      }
+      { "day": "Domingo · EBD", "time": "10h30" },
+      { "day": "Domingo", "time": "19h" },
+      { "day": "Quarta-feira", "time": "20h" },
+      { "day": "Quinta-feira", "time": "20h" },
+      { "day": "Sábado", "time": "19h" }
     ],
     "source": "https://www.igrejacristamaranata.org.br/enderecos-no-exterior/#local_exterior-portugal",
     "verifiedAt": "2026-10-18",
@@ -317,26 +164,11 @@
     "address": "Rua Hermes da Fonseca Vermelho 35, 7005-206 Évora",
     "region": "Alentejo",
     "schedule": [
-      {
-        "day": "Domingo · EBD",
-        "time": "10h30"
-      },
-      {
-        "day": "Domingo",
-        "time": "19h00"
-      },
-      {
-        "day": "Quarta-feira",
-        "time": "20h"
-      },
-      {
-        "day": "Quinta-feira",
-        "time": "20h"
-      },
-      {
-        "day": "Sábado",
-        "time": "19h"
-      }
+      { "day": "Domingo · EBD", "time": "10h30" },
+      { "day": "Domingo", "time": "19h00" },
+      { "day": "Quarta-feira", "time": "20h" },
+      { "day": "Quinta-feira", "time": "20h" },
+      { "day": "Sábado", "time": "19h" }
     ],
     "source": "https://www.igrejacristamaranata.org.br/enderecos-no-exterior/#local_exterior-portugal",
     "verifiedAt": "2026-10-18"
@@ -347,22 +179,10 @@
     "address": "Rua Almeida Garret 2, loja 2, 4760-708 Ribeirão, Famalicão",
     "region": "Norte",
     "schedule": [
-      {
-        "day": "Domingo · EBD",
-        "time": "10h30"
-      },
-      {
-        "day": "Domingo",
-        "time": "19h"
-      },
-      {
-        "day": "Quinta-feira",
-        "time": "20h"
-      },
-      {
-        "day": "Sábado",
-        "time": "19h"
-      }
+      { "day": "Domingo · EBD", "time": "10h30" },
+      { "day": "Domingo", "time": "19h" },
+      { "day": "Quinta-feira", "time": "20h" },
+      { "day": "Sábado", "time": "19h" }
     ],
     "source": "https://www.igrejacristamaranata.org.br/enderecos-no-exterior/#local_exterior-portugal",
     "verifiedAt": "2026-10-18",
@@ -374,26 +194,11 @@
     "address": "Rua do Alportel 243 loja C, Faro",
     "region": "Algarve",
     "schedule": [
-      {
-        "day": "Domingo · EBD",
-        "time": "10h30"
-      },
-      {
-        "day": "Domingo",
-        "time": "19h00"
-      },
-      {
-        "day": "Quarta-feira",
-        "time": "20h"
-      },
-      {
-        "day": "Quinta-feira",
-        "time": "20h"
-      },
-      {
-        "day": "Sábado",
-        "time": "19h00"
-      }
+      { "day": "Domingo · EBD", "time": "10h30" },
+      { "day": "Domingo", "time": "19h00" },
+      { "day": "Quarta-feira", "time": "20h" },
+      { "day": "Quinta-feira", "time": "20h" },
+      { "day": "Sábado", "time": "19h00" }
     ],
     "source": "https://www.igrejacristamaranata.org.br/enderecos-no-exterior/#local_exterior-portugal",
     "verifiedAt": "2026-10-18",
@@ -402,32 +207,17 @@
   {
     "id": "leiria",
     "name": "Leiria",
-    "address": "R. António do Espírito do Santo 90A, 2415-440 Leiria",
+    "address": "Avenida Marquês de Pombal 12B, 2410-152 Leiria",
     "region": "Centro",
     "schedule": [
-      {
-        "day": "Domingo · EBD",
-        "time": "10h30"
-      },
-      {
-        "day": "Domingo",
-        "time": "19h00"
-      },
-      {
-        "day": "Quarta-feira",
-        "time": "20h"
-      },
-      {
-        "day": "Quinta-feira",
-        "time": "20h"
-      },
-      {
-        "day": "Sábado",
-        "time": "19h00"
-      }
+      { "day": "Domingo · EBD", "time": "10h30" },
+      { "day": "Domingo", "time": "19h00" },
+      { "day": "Quarta-feira", "time": "20h" },
+      { "day": "Quinta-feira", "time": "20h" },
+      { "day": "Sábado", "time": "19h00" }
     ],
     "source": "https://www.igrejacristamaranata.org.br/enderecos-no-exterior/#local_exterior-portugal",
-    "verifiedAt": "2026-10-18",
+    "verifiedAt": "2026-10-31",
     "instagram": "https://www.instagram.com/icm.leiria.pt/"
   },
   {
@@ -436,34 +226,13 @@
     "address": "Rua Chaby Pinheiro, 8 A – 1000-096",
     "region": "Lisboa e Vale do Tejo",
     "schedule": [
-      {
-        "day": "Domingo · EBD",
-        "time": "10h30"
-      },
-      {
-        "day": "Domingo",
-        "time": "19h00"
-      },
-      {
-        "day": "Segunda-feira",
-        "time": "20h"
-      },
-      {
-        "day": "Terça-feira",
-        "time": "via Zoom"
-      },
-      {
-        "day": "Quarta-feira",
-        "time": "20h"
-      },
-      {
-        "day": "Quinta-feira",
-        "time": "20h"
-      },
-      {
-        "day": "Sábado",
-        "time": "19h00"
-      }
+      { "day": "Domingo · EBD", "time": "10h30" },
+      { "day": "Domingo", "time": "19h00" },
+      { "day": "Segunda-feira", "time": "20h" },
+      { "day": "Terça-feira", "time": "via Zoom" },
+      { "day": "Quarta-feira", "time": "20h" },
+      { "day": "Quinta-feira", "time": "20h" },
+      { "day": "Sábado", "time": "19h00" }
     ],
     "source": "https://www.igrejacristamaranata.org.br/enderecos-no-exterior/#local_exterior-portugal",
     "verifiedAt": "2026-10-18"
@@ -474,26 +243,11 @@
     "address": "Avenida Casal da Serra, 1 CP 2625-002, Póvoa de Sta Iria e Forte da Casa",
     "region": "Lisboa e Vale do Tejo",
     "schedule": [
-      {
-        "day": "Domingo · EBD",
-        "time": "10h30"
-      },
-      {
-        "day": "Domingo",
-        "time": "19h00"
-      },
-      {
-        "day": "Quarta-feira",
-        "time": "20h"
-      },
-      {
-        "day": "Quinta-feira",
-        "time": "20h"
-      },
-      {
-        "day": "Sábado",
-        "time": "19h00"
-      }
+      { "day": "Domingo · EBD", "time": "10h30" },
+      { "day": "Domingo", "time": "19h00" },
+      { "day": "Quarta-feira", "time": "20h" },
+      { "day": "Quinta-feira", "time": "20h" },
+      { "day": "Sábado", "time": "19h00" }
     ],
     "source": "https://www.igrejacristamaranata.org.br/enderecos-no-exterior/#local_exterior-portugal",
     "verifiedAt": "2026-10-18",
@@ -505,26 +259,11 @@
     "address": "Rua Ferreira de Castro 27, 2640-482 Mafra",
     "region": "Lisboa e Vale do Tejo",
     "schedule": [
-      {
-        "day": "Domingo · EBD",
-        "time": "10h30"
-      },
-      {
-        "day": "Domingo",
-        "time": "19h00"
-      },
-      {
-        "day": "Quarta-feira",
-        "time": "20h"
-      },
-      {
-        "day": "Quinta-feira",
-        "time": "20h"
-      },
-      {
-        "day": "Sábado",
-        "time": "19h00"
-      }
+      { "day": "Domingo · EBD", "time": "10h30" },
+      { "day": "Domingo", "time": "19h00" },
+      { "day": "Quarta-feira", "time": "20h" },
+      { "day": "Quinta-feira", "time": "20h" },
+      { "day": "Sábado", "time": "19h00" }
     ],
     "source": "https://www.igrejacristamaranata.org.br/enderecos-no-exterior/#local_exterior-portugal",
     "verifiedAt": "2026-10-18",
@@ -536,26 +275,11 @@
     "address": "R. Abel Salazar 370, 4425-005 Águas Santas, Portugal",
     "region": "Norte",
     "schedule": [
-      {
-        "day": "Domingo · EBD",
-        "time": "10h30"
-      },
-      {
-        "day": "Domingo",
-        "time": "19h"
-      },
-      {
-        "day": "Quarta-feira",
-        "time": "20h"
-      },
-      {
-        "day": "Quinta-feira",
-        "time": "20h"
-      },
-      {
-        "day": "Sábado",
-        "time": "19h"
-      }
+      { "day": "Domingo · EBD", "time": "10h30" },
+      { "day": "Domingo", "time": "19h" },
+      { "day": "Quarta-feira", "time": "20h" },
+      { "day": "Quinta-feira", "time": "20h" },
+      { "day": "Sábado", "time": "19h" }
     ],
     "source": "https://www.igrejacristamaranata.org.br/enderecos-no-exterior/#local_exterior-portugal",
     "verifiedAt": "2026-10-18",
@@ -567,26 +291,11 @@
     "address": "R. José Joaquim Marques 111, 2870-348 Montijo",
     "region": "Lisboa e Vale do Tejo",
     "schedule": [
-      {
-        "day": "Domingo · EBD",
-        "time": "10h30"
-      },
-      {
-        "day": "Domingo",
-        "time": "19h"
-      },
-      {
-        "day": "Quarta-feira",
-        "time": "20h"
-      },
-      {
-        "day": "Quinta-feira",
-        "time": "20h"
-      },
-      {
-        "day": "Sábado",
-        "time": "19h"
-      }
+      { "day": "Domingo · EBD", "time": "10h30" },
+      { "day": "Domingo", "time": "19h" },
+      { "day": "Quarta-feira", "time": "20h" },
+      { "day": "Quinta-feira", "time": "20h" },
+      { "day": "Sábado", "time": "19h" }
     ],
     "source": "https://www.igrejacristamaranata.org.br/enderecos-no-exterior/#local_exterior-portugal",
     "verifiedAt": "2026-10-18"
@@ -597,34 +306,13 @@
     "address": "Largo Elina Guimarães,  5 D – 2675-308",
     "region": "Lisboa e Vale do Tejo",
     "schedule": [
-      {
-        "day": "Domingo · EBD",
-        "time": "10h30"
-      },
-      {
-        "day": "Domingo",
-        "time": "19h00"
-      },
-      {
-        "day": "Segunda-feira",
-        "time": "20h"
-      },
-      {
-        "day": "Terça-feira",
-        "time": "via Zoom"
-      },
-      {
-        "day": "Quarta-feira",
-        "time": "20h"
-      },
-      {
-        "day": "Quinta-feira",
-        "time": "20h"
-      },
-      {
-        "day": "Sábado",
-        "time": "19h00"
-      }
+      { "day": "Domingo · EBD", "time": "10h30" },
+      { "day": "Domingo", "time": "19h00" },
+      { "day": "Segunda-feira", "time": "20h" },
+      { "day": "Terça-feira", "time": "via Zoom" },
+      { "day": "Quarta-feira", "time": "20h" },
+      { "day": "Quinta-feira", "time": "20h" },
+      { "day": "Sábado", "time": "19h00" }
     ],
     "source": "https://www.igrejacristamaranata.org.br/enderecos-no-exterior/#local_exterior-portugal",
     "verifiedAt": "2026-10-18",
@@ -636,26 +324,11 @@
     "address": "Rua São João de Deus nº 52 - R/C - 8500-508",
     "region": "Algarve",
     "schedule": [
-      {
-        "day": "Domingo · EBD",
-        "time": "10h30"
-      },
-      {
-        "day": "Domingo",
-        "time": "19h"
-      },
-      {
-        "day": "Quarta-feira",
-        "time": "20h"
-      },
-      {
-        "day": "Quinta-feira",
-        "time": "20h"
-      },
-      {
-        "day": "Sábado",
-        "time": "19h"
-      }
+      { "day": "Domingo · EBD", "time": "10h30" },
+      { "day": "Domingo", "time": "19h" },
+      { "day": "Quarta-feira", "time": "20h" },
+      { "day": "Quinta-feira", "time": "20h" },
+      { "day": "Sábado", "time": "19h" }
     ],
     "source": "https://www.igrejacristamaranata.org.br/enderecos-no-exterior/#local_exterior-portugal",
     "verifiedAt": "2026-10-18",
@@ -664,40 +337,19 @@
   {
     "id": "porto",
     "name": "Porto",
-    "address": "Rua de Contumil, 813 CP 4450-130, Porto",
+    "address": "Rua de Contumil 813, 4350-134 Porto",
     "region": "Norte",
     "schedule": [
-      {
-        "day": "Domingo · EBD",
-        "time": "10h30"
-      },
-      {
-        "day": "Domingo",
-        "time": "19h00"
-      },
-      {
-        "day": "Segunda-feira",
-        "time": "20h"
-      },
-      {
-        "day": "Terça-feira",
-        "time": "via Zoom"
-      },
-      {
-        "day": "Quarta-feira",
-        "time": "20h"
-      },
-      {
-        "day": "Quinta-feira",
-        "time": "20h"
-      },
-      {
-        "day": "Sábado",
-        "time": "19h00"
-      }
+      { "day": "Domingo · EBD", "time": "10h30" },
+      { "day": "Domingo", "time": "19h00" },
+      { "day": "Segunda-feira", "time": "20h" },
+      { "day": "Terça-feira", "time": "via Zoom" },
+      { "day": "Quarta-feira", "time": "20h" },
+      { "day": "Quinta-feira", "time": "20h" },
+      { "day": "Sábado", "time": "19h00" }
     ],
     "source": "https://www.igrejacristamaranata.org.br/enderecos-no-exterior/#local_exterior-portugal",
-    "verifiedAt": "2026-10-18",
+    "verifiedAt": "2026-10-31",
     "instagram": "https://www.instagram.com/igrejacristamaranata_porto/"
   },
   {
@@ -706,34 +358,13 @@
     "address": "R. Óscar Monteiro Torres 2, 2745-011 Queluz",
     "region": "Lisboa e Vale do Tejo",
     "schedule": [
-      {
-        "day": "Domingo · EBD",
-        "time": "10h30"
-      },
-      {
-        "day": "Domingo",
-        "time": "19h"
-      },
-      {
-        "day": "Segunda-feira",
-        "time": "20h"
-      },
-      {
-        "day": "Terça-feira",
-        "time": "via Zoom"
-      },
-      {
-        "day": "Quarta-feira",
-        "time": "20h"
-      },
-      {
-        "day": "Quinta-feira",
-        "time": "20h"
-      },
-      {
-        "day": "Sábado",
-        "time": "19h"
-      }
+      { "day": "Domingo · EBD", "time": "10h30" },
+      { "day": "Domingo", "time": "19h" },
+      { "day": "Segunda-feira", "time": "20h" },
+      { "day": "Terça-feira", "time": "via Zoom" },
+      { "day": "Quarta-feira", "time": "20h" },
+      { "day": "Quinta-feira", "time": "20h" },
+      { "day": "Sábado", "time": "19h" }
     ],
     "source": "https://www.igrejacristamaranata.org.br/enderecos-no-exterior/#local_exterior-portugal",
     "verifiedAt": "2026-10-18",
@@ -745,26 +376,11 @@
     "address": "R. José Pedro da Silva 11 R/C DTO, 2910-575 Setúbal",
     "region": "Lisboa e Vale do Tejo",
     "schedule": [
-      {
-        "day": "Domingo · EBD",
-        "time": "10h30"
-      },
-      {
-        "day": "Domingo",
-        "time": "19h00"
-      },
-      {
-        "day": "Quarta-feira",
-        "time": "20h"
-      },
-      {
-        "day": "Quinta-feira",
-        "time": "20h"
-      },
-      {
-        "day": "Sábado",
-        "time": "19h"
-      }
+      { "day": "Domingo · EBD", "time": "10h30" },
+      { "day": "Domingo", "time": "19h00" },
+      { "day": "Quarta-feira", "time": "20h" },
+      { "day": "Quinta-feira", "time": "20h" },
+      { "day": "Sábado", "time": "19h" }
     ],
     "source": "https://www.igrejacristamaranata.org.br/enderecos-no-exterior/#local_exterior-portugal",
     "verifiedAt": "2026-10-18",

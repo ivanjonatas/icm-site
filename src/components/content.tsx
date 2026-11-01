@@ -1,4 +1,5 @@
 import React from 'react';
+import {churchMapsUrl} from '../churchMaps';
 
 import type {
   Church,
@@ -7,7 +8,10 @@ import type {
   Resource,
 } from '../types';
 
-import {formatDate, isFuture} from '../data';
+import {
+  formatDate,
+  isFuture,
+} from '../data';
 
 import {
   Link,
@@ -24,37 +28,35 @@ type ResourceCover = {
   action: string;
 };
 
-const resourceCovers: Record<string, ResourceCover> = {
+const resourceCovers: Record<
+  string,
+  ResourceCover
+> = {
   ebd: {
     src: '/images/conteudos/image(6).png',
     alt: 'Escola Bíblica Dominical.',
     action: 'Consultar os materiais',
   },
-
   radio: {
     src: '/images/conteudos/image(2).png',
     alt: 'Rádio Maanaim.',
     action: 'Ouvir a Rádio Maanaim',
   },
-
   tv: {
     src: '/images/conteudos/image(3).png',
     alt: 'TV Maanaim.',
     action: 'Acompanhar a TV Maanaim',
   },
-
   esf: {
     src: '/images/conteudos/logo-esf.jpg',
     alt: 'Evangelho Sem Fronteiras.',
     action: 'Conhecer o ESF Portugal',
   },
-
   louvor: {
     src: '/images/conteudos/image(5).png',
     alt: 'Departamento de Louvor — coletânea de partituras.',
     action: 'Explorar os conteúdos de louvor',
   },
-
   acessibilidade: {
     src: '/images/conteudos/image(4).png',
     alt: 'Acessibilidade ICM.',
@@ -67,7 +69,9 @@ export function ResourceLink({
 }: {
   resource: Resource;
 }) {
-  const cover = resourceCovers[resource.id] ?? {
+  const cover = resourceCovers[
+    resource.id
+  ] ?? {
     src: '/images/conteudos/image(6).png',
     alt: 'Escola Bíblica Dominical.',
     action: 'Aceder ao conteúdo',
@@ -137,19 +141,31 @@ export function NewsCard({
     <article
       className={
         'news-card ' +
-        (featured ? 'news-featured' : '')
+        (
+          featured
+            ? 'news-featured'
+            : ''
+        )
       }
     >
       <Link
-        href={'/noticias/' + article.slug}
+        href={
+          '/noticias/' +
+          article.slug
+        }
         className="news-image"
         aria-label={article.title}
       >
         <Photo
-          name={article.image
-            .split('/')
-            .pop()!
-            .replace('.webp', '')}
+          name={
+            article.image
+              .split('/')
+              .pop()!
+              .replace(
+                '.webp',
+                ''
+              )
+          }
           alt={article.title}
         />
 
@@ -160,15 +176,27 @@ export function NewsCard({
 
       <div className="news-copy">
         <div className="article-meta">
-          <span>{article.category}</span>
+          <span>
+            {article.category}
+          </span>
 
           <time dateTime={article.date}>
-            {formatDate(article.date, true)}
+            {
+              formatDate(
+                article.date,
+                true
+              )
+            }
           </time>
         </div>
 
         <h3>
-          <Link href={'/noticias/' + article.slug}>
+          <Link
+            href={
+              '/noticias/' +
+              article.slug
+            }
+          >
             {article.title}
           </Link>
         </h3>
@@ -176,7 +204,10 @@ export function NewsCard({
         <p>{article.description}</p>
 
         <Link
-          href={'/noticias/' + article.slug}
+          href={
+            '/noticias/' +
+            article.slug
+          }
           className="text-link"
         >
           Ler notícia
@@ -235,12 +266,10 @@ export function ChurchCard({
       </details>
 
       <External
-        href={
-          'https://www.google.com/maps/search/?api=1&query=' +
-          encodeURIComponent(
-            church.address + ', Portugal'
-          )
-        }
+        href={churchMapsUrl(
+          church,
+          'directions'
+        )}
         className="text-link"
       >
         Obter direções
@@ -255,36 +284,54 @@ export function EventRow({
   event: ChurchEvent;
 }) {
   const date = new Date(
-    event.date + 'T12:00:00Z'
+    event.date +
+    'T12:00:00Z'
   );
 
   return (
     <Link
       className="event-row"
-      href={'/agenda/' + event.slug}
+      href={
+        '/agenda/' +
+        event.slug
+      }
     >
       <span className="event-date">
-        <strong>{date.getUTCDate()}</strong>
+        <strong>
+          {date.getUTCDate()}
+        </strong>
 
         <span>
-          {new Intl.DateTimeFormat('pt-PT', {
-            month: 'short',
-            year: 'numeric',
-            timeZone: 'Europe/Lisbon',
-          }).format(date)}
+          {
+            new Intl.DateTimeFormat(
+              'pt-PT',
+              {
+                month: 'short',
+                year: 'numeric',
+                timeZone:
+                  'Europe/Lisbon',
+              }
+            ).format(date)
+          }
         </span>
       </span>
 
       <div>
-        <small>{event.city} · Portugal</small>
+        <small>
+          {event.city} · Portugal
+        </small>
+
         <h3>{event.title}</h3>
+
         <p>{event.description}</p>
       </div>
 
       <span className="event-state">
-        {isFuture(event.date)
-          ? 'Próximo encontro'
-          : 'Realizado'}
+        {
+          isFuture(event.date)
+            ? 'Próximo encontro'
+            : 'Realizado'
+        }
       </span>
 
       <Icon name="arrow" />

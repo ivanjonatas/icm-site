@@ -1,5 +1,14 @@
-import React, {useCallback, useEffect, useId, useMemo, useRef, useState} from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useId,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
+
 import {churches} from '../data';
+import {churchMapsUrl} from '../churchMaps';
 import {Icon} from './ui';
 import geography from '../map/portugal-map.json';
 import placements from '../map/church-locations.json';
@@ -7,8 +16,16 @@ import './ChurchMap.css';
 
 type Point = readonly number[];
 type Box = [number, number, number, number];
-type MapPart = {d: string; rings: Point[][]};
-type FocusRequest = {churchId: string; serial: number};
+
+type MapPart = {
+  d: string;
+  rings: Point[][];
+};
+
+type FocusRequest = {
+  churchId: string;
+  serial: number;
+};
 
 type Label = {
   id: string;
@@ -45,7 +62,10 @@ const baseBox: Box = [
 ];
 
 const entries = placements.flatMap(location => {
-  const church = churches.find(item => item.id === location.churchId);
+  const church = churches.find(
+    item => item.id === location.churchId
+  );
+
   return church ? [{location, church}] : [];
 });
 
@@ -53,9 +73,14 @@ function ringContains(point: Point, ring: Point[]) {
   const [x, y] = point;
   let inside = false;
 
-  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+  for (
+    let i = 0, j = ring.length - 1;
+    i < ring.length;
+    j = i++
+  ) {
     const [ax, ay] = ring[j];
     const [bx, by] = ring[i];
+
     const length = (bx - ax) ** 2 + (by - ay) ** 2;
 
     const t = length
@@ -63,7 +88,8 @@ function ringContains(point: Point, ring: Point[]) {
           0,
           Math.min(
             1,
-            ((x - ax) * (bx - ax) + (y - ay) * (by - ay)) / length
+            ((x - ax) * (bx - ax) + (y - ay) * (by - ay)) /
+              length
           )
         )
       : 0;
@@ -90,7 +116,10 @@ function ringContains(point: Point, ring: Point[]) {
 
 function splitMapParts(d: string): MapPart[] {
   const rings = (d.match(/M[^M]+/g) || []).map(path => {
-    const values = (path.match(/-?\d+(?:\.\d+)?/g) || []).map(Number);
+    const values = (
+      path.match(/-?\d+(?:\.\d+)?/g) || []
+    ).map(Number);
+
     const points: Point[] = [];
 
     for (let i = 0; i < values.length; i += 2) {
@@ -100,11 +129,22 @@ function splitMapParts(d: string): MapPart[] {
     const area = Math.abs(
       points.reduce((sum, point, i) => {
         const next = points[(i + 1) % points.length];
-        return sum + point[0] * next[1] - next[0] * point[1];
+
+        return (
+          sum +
+          point[0] * next[1] -
+          next[0] * point[1]
+        );
       }, 0) / 2
     );
 
-    return {d: path, points, area, parent: -1, depth: 0};
+    return {
+      d: path,
+      points,
+      area,
+      parent: -1,
+      depth: 0,
+    };
   });
 
   for (const ring of rings) {
@@ -121,7 +161,9 @@ function splitMapParts(d: string): MapPart[] {
   }
 
   const depth = (i: number): number =>
-    rings[i].parent < 0 ? 0 : depth(rings[i].parent) + 1;
+    rings[i].parent < 0
+      ? 0
+      : depth(rings[i].parent) + 1;
 
   rings.forEach((ring, i) => {
     ring.depth = depth(i);
@@ -150,28 +192,36 @@ function splitMapParts(d: string): MapPart[] {
 function partContains(point: Point, part: MapPart) {
   return (
     ringContains(point, part.rings[0]) &&
-    !part.rings.slice(1).some(ring => ringContains(point, ring))
+    !part.rings
+      .slice(1)
+      .some(ring => ringContains(point, ring))
   );
 }
 
 const mapParts = new Map(
-  municipalities.map(item => [item, splitMapParts(item.d)])
+  municipalities.map(item => [
+    item,
+    splitMapParts(item.d),
+  ])
 );
 
 const shapes = municipalities.flatMap(municipality =>
-  (mapParts.get(municipality) || []).map((part, index) => ({
-    zone: municipality.id + ':' + index,
-    municipalityId: municipality.id,
-    name: municipality.name,
-    d: part.d,
-    churchIds: entries
-      .filter(
-        entry =>
-          entry.location.municipalityId === municipality.id &&
-          partContains(entry.location.point, part)
-      )
-      .map(entry => entry.church.id),
-  }))
+  (mapParts.get(municipality) || []).map(
+    (part, index) => ({
+      zone: municipality.id + ':' + index,
+      municipalityId: municipality.id,
+      name: municipality.name,
+      d: part.d,
+      churchIds: entries
+        .filter(
+          entry =>
+            entry.location.municipalityId ===
+              municipality.id &&
+            partContains(entry.location.point, part)
+        )
+        .map(entry => entry.church.id),
+    })
+  )
 );
 
 const churchZones = new Map<string, string>();
@@ -224,11 +274,17 @@ function clampBox(box: Box, base: Box): Box {
   return [
     Math.max(
       base[0] - marginX,
-      Math.min(base[0] + base[2] - width + marginX, box[0])
+      Math.min(
+        base[0] + base[2] - width + marginX,
+        box[0]
+      )
     ),
     Math.max(
       base[1] - marginY,
-      Math.min(base[1] + base[3] - height + marginY, box[1])
+      Math.min(
+        base[1] + base[3] - height + marginY,
+        box[1]
+      )
     ),
     width,
     height,
@@ -238,13 +294,20 @@ function clampBox(box: Box, base: Box): Box {
 function viewport(box: Box, rect: DOMRect) {
   const scale = Math.max(
     .001,
-    Math.min(rect.width / box[2], rect.height / box[3])
+    Math.min(
+      rect.width / box[2],
+      rect.height / box[3]
+    )
   );
 
   return {
     scale,
-    left: rect.left + (rect.width - box[2] * scale) / 2,
-    top: rect.top + (rect.height - box[3] * scale) / 2,
+    left:
+      rect.left +
+      (rect.width - box[2] * scale) / 2,
+    top:
+      rect.top +
+      (rect.height - box[3] * scale) / 2,
   };
 }
 
@@ -284,13 +347,20 @@ function boxAtPoint(
   ], base);
 }
 
-function useMapCamera(base: Box, clearHover: () => void) {
+function useMapCamera(
+  base: Box,
+  clearHover: () => void
+) {
   const [box, setBox] = useState<Box>(base);
-  const [interacting, setInteracting] = useState(false);
+  const [interacting, setInteracting] =
+    useState(false);
 
   const svg = useRef<SVGSVGElement>(null);
   const current = useRef<Box>(base);
-  const pointers = useRef(new Map<number, ScreenPoint>());
+  const pointers = useRef(
+    new Map<number, ScreenPoint>()
+  );
+
   const gesture = useRef<Gesture | null>(null);
   const ignoreClick = useRef(false);
   const paintFrame = useRef<number | null>(null);
@@ -306,7 +376,9 @@ function useMapCamera(base: Box, clearHover: () => void) {
     if (
       next.every(
         (value, index) =>
-          Math.abs(value - current.current[index]) < .00001
+          Math.abs(
+            value - current.current[index]
+          ) < .00001
       )
     ) {
       return;
@@ -340,7 +412,11 @@ function useMapCamera(base: Box, clearHover: () => void) {
 
     const target = clampBox(candidate, base);
 
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    if (
+      window.matchMedia(
+        '(prefers-reduced-motion: reduce)'
+      ).matches
+    ) {
       apply(target);
       return;
     }
@@ -349,21 +425,29 @@ function useMapCamera(base: Box, clearHover: () => void) {
     const began = performance.now();
 
     function step(time: number) {
-      const progress = Math.min(1, (time - began) / 260);
+      const progress = Math.min(
+        1,
+        (time - began) / 260
+      );
+
       const eased = 1 - (1 - progress) ** 3;
 
       apply(
         start.map(
           (value, index) =>
-            value + (target[index] - value) * eased
+            value +
+            (target[index] - value) * eased
         ) as Box
       );
 
       motionFrame.current =
-        progress < 1 ? requestAnimationFrame(step) : null;
+        progress < 1
+          ? requestAnimationFrame(step)
+          : null;
     }
 
-    motionFrame.current = requestAnimationFrame(step);
+    motionFrame.current =
+      requestAnimationFrame(step);
   }
 
   function capturePointers() {
@@ -426,7 +510,12 @@ function useMapCamera(base: Box, clearHover: () => void) {
   function onPointerDown(
     event: React.PointerEvent<SVGSVGElement>
   ) {
-    if (event.pointerType === 'mouse' && event.button !== 0) {
+    if (event.pointerType === 'touch') return;
+
+    if (
+      event.pointerType === 'mouse' &&
+      event.button !== 0
+    ) {
       return;
     }
 
@@ -485,7 +574,9 @@ function useMapCamera(base: Box, clearHover: () => void) {
 
       apply(
         boxAtPoint(
-          active.box[2] * active.distance / distance,
+          active.box[2] *
+            active.distance /
+            distance,
           active.anchor,
           centre,
           rect,
@@ -499,7 +590,10 @@ function useMapCamera(base: Box, clearHover: () => void) {
     const dx = point.x - active.start.x;
     const dy = point.y - active.start.y;
 
-    if (!active.moved && Math.hypot(dx, dy) < 5) {
+    if (
+      !active.moved &&
+      Math.hypot(dx, dy) < 5
+    ) {
       return;
     }
 
@@ -511,17 +605,30 @@ function useMapCamera(base: Box, clearHover: () => void) {
       capturePointers();
     }
 
-    const scale = viewport(active.box, rect).scale;
+    const scale = viewport(
+      active.box,
+      rect
+    ).scale;
+
     const time = performance.now();
-    const elapsed = Math.max(8, time - active.time);
+    const elapsed = Math.max(
+      8,
+      time - active.time
+    );
 
     active.vx =
       active.vx * .35 -
-      (point.x - active.previous.x) / scale / elapsed * .65;
+      (point.x - active.previous.x) /
+        scale /
+        elapsed *
+        .65;
 
     active.vy =
       active.vy * .35 -
-      (point.y - active.previous.y) / scale / elapsed * .65;
+      (point.y - active.previous.y) /
+        scale /
+        elapsed *
+        .65;
 
     active.previous = point;
     active.time = time;
@@ -538,7 +645,9 @@ function useMapCamera(base: Box, clearHover: () => void) {
     if (
       !svg.current ||
       performance.now() - active.time > 90 ||
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      window.matchMedia(
+        '(prefers-reduced-motion: reduce)'
+      ).matches
     ) {
       return;
     }
@@ -558,7 +667,11 @@ function useMapCamera(base: Box, clearHover: () => void) {
       Math.min(2.2 / scale, active.vy)
     );
 
-    if (Math.hypot(vx, vy) * scale < .08) return;
+    if (
+      Math.hypot(vx, vy) * scale < .08
+    ) {
+      return;
+    }
 
     let previous = performance.now();
     setInteracting(true);
@@ -580,8 +693,17 @@ function useMapCamera(base: Box, clearHover: () => void) {
         view[3],
       ], base);
 
-      if (Math.abs(next[0] - view[0]) < .0001) vx = 0;
-      if (Math.abs(next[1] - view[1]) < .0001) vy = 0;
+      if (
+        Math.abs(next[0] - view[0]) < .0001
+      ) {
+        vx = 0;
+      }
+
+      if (
+        Math.abs(next[1] - view[1]) < .0001
+      ) {
+        vy = 0;
+      }
 
       apply(next);
 
@@ -589,29 +711,43 @@ function useMapCamera(base: Box, clearHover: () => void) {
       vx *= decay;
       vy *= decay;
 
-      if (Math.hypot(vx, vy) * scale > .02) {
-        motionFrame.current = requestAnimationFrame(step);
+      if (
+        Math.hypot(vx, vy) * scale > .02
+      ) {
+        motionFrame.current =
+          requestAnimationFrame(step);
       } else {
         motionFrame.current = null;
         setInteracting(false);
       }
     }
 
-    motionFrame.current = requestAnimationFrame(step);
+    motionFrame.current =
+      requestAnimationFrame(step);
   }
 
   function endPointer(
     event: React.PointerEvent<SVGSVGElement>,
     cancelled = false
   ) {
-    if (!pointers.current.has(event.pointerId)) return;
+    if (
+      !pointers.current.has(event.pointerId)
+    ) {
+      return;
+    }
 
     const active = gesture.current;
     pointers.current.delete(event.pointerId);
 
     try {
-      if (svg.current?.hasPointerCapture(event.pointerId)) {
-        svg.current.releasePointerCapture(event.pointerId);
+      if (
+        svg.current?.hasPointerCapture(
+          event.pointerId
+        )
+      ) {
+        svg.current.releasePointerCapture(
+          event.pointerId
+        );
       }
     } catch {}
 
@@ -690,7 +826,8 @@ function useMapCamera(base: Box, clearHover: () => void) {
       base[2] / 6
     );
 
-    const height = width * base[3] / base[2];
+    const height =
+      width * base[3] / base[2];
 
     animate([
       point[0] - width / 2,
@@ -709,7 +846,9 @@ function useMapCamera(base: Box, clearHover: () => void) {
     function wheel(event: WheelEvent) {
       const focused =
         element === document.activeElement ||
-        element!.contains(document.activeElement);
+        element!.contains(
+          document.activeElement
+        );
 
       if (
         !event.ctrlKey &&
@@ -730,30 +869,255 @@ function useMapCamera(base: Box, clearHover: () => void) {
 
       const delta = Math.max(
         -120,
-        Math.min(120, event.deltaY * unit)
+        Math.min(
+          120,
+          event.deltaY * unit
+        )
       );
 
       zoomBy(
         Math.exp(delta * .0025),
-        {x: event.clientX, y: event.clientY},
+        {
+          x: event.clientX,
+          y: event.clientY,
+        },
         false
       );
     }
 
-    element.addEventListener('wheel', wheel, {
-      passive: false,
-    });
+    let touchGesture: PinchGesture | null =
+      null;
+
+    let touchStartPoint: ScreenPoint | null =
+      null;
+
+    function pointsInsideMap(
+      event: TouchEvent
+    ): ScreenPoint[] {
+      return Array.from(event.touches)
+        .filter(touch =>
+          element!.contains(
+            touch.target as Node
+          )
+        )
+        .map(touch => ({
+          x: touch.clientX,
+          y: touch.clientY,
+        }));
+    }
+
+    function beginTouchGesture(
+      points: ScreenPoint[]
+    ) {
+      const centre = {
+        x: (points[0].x + points[1].x) / 2,
+        y: (points[0].y + points[1].y) / 2,
+      };
+
+      const view = [
+        ...current.current,
+      ] as Box;
+
+      touchGesture = {
+        kind: 'pinch',
+        box: view,
+        distance: Math.max(
+          1,
+          Math.hypot(
+            points[1].x - points[0].x,
+            points[1].y - points[0].y
+          )
+        ),
+        anchor: worldPoint(
+          centre,
+          view,
+          element!.getBoundingClientRect()
+        ),
+      };
+
+      ignoreClick.current = true;
+      hover.current();
+      setInteracting(true);
+    }
+
+    function touchStart(
+      event: TouchEvent
+    ) {
+      const points =
+        pointsInsideMap(event);
+
+      if (points.length === 1) {
+        stopMotion();
+        touchGesture = null;
+        touchStartPoint = points[0];
+        ignoreClick.current = false;
+        return;
+      }
+
+      if (
+        points.length < 2 ||
+        !event.cancelable
+      ) {
+        return;
+      }
+
+      event.preventDefault();
+      stopMotion();
+      beginTouchGesture(points);
+    }
+
+    function touchMove(
+      event: TouchEvent
+    ) {
+      const points =
+        pointsInsideMap(event);
+
+      if (
+        points.length < 2 ||
+        !touchGesture
+      ) {
+        if (
+          points[0] &&
+          touchStartPoint &&
+          Math.hypot(
+            points[0].x -
+              touchStartPoint.x,
+            points[0].y -
+              touchStartPoint.y
+          ) > 5
+        ) {
+          ignoreClick.current = true;
+        }
+
+        return;
+      }
+
+      if (!event.cancelable) {
+        touchGesture = null;
+        setInteracting(false);
+        return;
+      }
+
+      event.preventDefault();
+
+      const centre = {
+        x: (points[0].x + points[1].x) / 2,
+        y: (points[0].y + points[1].y) / 2,
+      };
+
+      const distance = Math.max(
+        1,
+        Math.hypot(
+          points[1].x - points[0].x,
+          points[1].y - points[0].y
+        )
+      );
+
+      apply(
+        boxAtPoint(
+          touchGesture.box[2] *
+            touchGesture.distance /
+            distance,
+          touchGesture.anchor,
+          centre,
+          element!.getBoundingClientRect(),
+          base
+        )
+      );
+    }
+
+    function touchEnd(
+      event: TouchEvent
+    ) {
+      const points =
+        pointsInsideMap(event);
+
+      if (
+        touchGesture &&
+        points.length >= 2
+      ) {
+        beginTouchGesture(points);
+        return;
+      }
+
+      touchGesture = null;
+      touchStartPoint = null;
+      setInteracting(false);
+    }
+
+    function touchCancel() {
+      touchGesture = null;
+      touchStartPoint = null;
+      ignoreClick.current = true;
+      setInteracting(false);
+    }
+
+    element.addEventListener(
+      'touchstart',
+      touchStart,
+      {passive: false}
+    );
+
+    element.addEventListener(
+      'touchmove',
+      touchMove,
+      {passive: false}
+    );
+
+    element.addEventListener(
+      'touchend',
+      touchEnd
+    );
+
+    element.addEventListener(
+      'touchcancel',
+      touchCancel
+    );
+
+    element.addEventListener(
+      'wheel',
+      wheel,
+      {passive: false}
+    );
 
     return () => {
       alive.current = false;
-      element.removeEventListener('wheel', wheel);
+
+      element.removeEventListener(
+        'wheel',
+        wheel
+      );
+
+      element.removeEventListener(
+        'touchstart',
+        touchStart
+      );
+
+      element.removeEventListener(
+        'touchmove',
+        touchMove
+      );
+
+      element.removeEventListener(
+        'touchend',
+        touchEnd
+      );
+
+      element.removeEventListener(
+        'touchcancel',
+        touchCancel
+      );
 
       if (paintFrame.current !== null) {
-        cancelAnimationFrame(paintFrame.current);
+        cancelAnimationFrame(
+          paintFrame.current
+        );
       }
 
       if (motionFrame.current !== null) {
-        cancelAnimationFrame(motionFrame.current);
+        cancelAnimationFrame(
+          motionFrame.current
+        );
       }
 
       paintFrame.current = null;
@@ -784,23 +1148,15 @@ function useMapCamera(base: Box, clearHover: () => void) {
       onLostPointerCapture: (
         event: React.PointerEvent<SVGSVGElement>
       ) => {
-        if (event.target === event.currentTarget) {
+        if (
+          event.target ===
+          event.currentTarget
+        ) {
           endPointer(event, true);
         }
       },
     },
   };
-}
-
-function googleMaps(address: string) {
-  const query = /Portugal/i.test(address)
-    ? address
-    : address + ', Portugal';
-
-  return (
-    'https://www.google.com/maps/search/?api=1&query=' +
-    encodeURIComponent(query)
-  );
 }
 
 function MapPanel({
@@ -828,7 +1184,8 @@ function MapPanel({
 
   const list = useMemo(
     () => entries.filter(
-      entry => visibleIds.has(entry.church.id)
+      entry =>
+        visibleIds.has(entry.church.id)
     ),
     [visibleIds]
   );
@@ -848,12 +1205,14 @@ function MapPanel({
   useEffect(() => {
     if (!svg.current) return;
 
-    const observer = new ResizeObserver(([entry]) => {
-      setSize({
-        width: entry.contentRect.width,
-        height: entry.contentRect.height,
-      });
-    });
+    const observer = new ResizeObserver(
+      ([entry]) => {
+        setSize({
+          width: entry.contentRect.width,
+          height: entry.contentRect.height,
+        });
+      }
+    );
 
     observer.observe(svg.current);
 
@@ -864,19 +1223,27 @@ function MapPanel({
     if (!focusRequest) return;
 
     const entry = entries.find(
-      item => item.church.id === focusRequest.churchId
+      item =>
+        item.church.id ===
+        focusRequest.churchId
     );
 
-    if (entry && visibleIds.has(entry.church.id)) {
+    if (
+      entry &&
+      visibleIds.has(entry.church.id)
+    ) {
       camera.focus(entry.location.point);
     }
   }, [focusRequest, visibleIds]);
 
-  const choose = useCallback((id: string) => {
-    if (!ignoreClick.current) {
-      onSelect(id);
-    }
-  }, [onSelect]);
+  const choose = useCallback(
+    (id: string) => {
+      if (!ignoreClick.current) {
+        onSelect(id);
+      }
+    },
+    [onSelect]
+  );
 
   const areas = useMemo(
     () => shapes.map(shape => ({
@@ -891,38 +1258,62 @@ function MapPanel({
   const municipalityLayer = useMemo(() => (
     <g className="map-municipalities">
       {areas.map(area => {
-        const hasChurch = area.churches.length > 0;
+        const hasChurch =
+          area.churches.length > 0;
 
         return (
           <path
             key={area.zone}
             d={area.d}
             fillRule="evenodd"
-            data-municipality={area.municipalityId}
-            data-part={area.zone.split(':')[1]}
+            data-municipality={
+              area.municipalityId
+            }
+            data-part={
+              area.zone.split(':')[1]
+            }
             className={
               'map-municipality' +
-              (hasChurch ? ' has-church' : '') +
               (
-                hasChurch && hoveredZone === area.zone
+                hasChurch
+                  ? ' has-church'
+                  : ''
+              ) +
+              (
+                hasChurch &&
+                hoveredZone === area.zone
                   ? ' is-hovered'
                   : ''
               ) +
               (
-                selectedId !== null && area.churches.includes(selectedId)
+                selectedId !== null &&
+                area.churches.includes(
+                  selectedId
+                )
                   ? ' is-selected'
                   : ''
               )
             }
             onPointerEnter={event => {
-              if (event.pointerType === 'mouse') {
-                onHover(hasChurch ? area.zone : null);
+              if (
+                event.pointerType ===
+                'mouse'
+              ) {
+                onHover(
+                  hasChurch
+                    ? area.zone
+                    : null
+                );
               }
             }}
-            onPointerLeave={() => onHover(null)}
+            onPointerLeave={() =>
+              onHover(null)
+            }
             onClick={() => {
               if (area.churches[0]) {
-                choose(area.churches[0]);
+                choose(
+                  area.churches[0]
+                );
               }
             }}
           >
@@ -940,7 +1331,13 @@ function MapPanel({
         );
       })}
     </g>
-  ), [areas, hoveredZone, selectedId, onHover, choose]);
+  ), [
+    areas,
+    hoveredZone,
+    selectedId,
+    onHover,
+    choose,
+  ]);
 
   const labels = (() => {
     const width = box[2] * scale;
@@ -961,11 +1358,15 @@ function MapPanel({
 
     const occupied = list.map(entry => ({
       x:
-        (entry.location.point[0] - box[0]) * scale -
-        10,
+        (
+          entry.location.point[0] -
+          box[0]
+        ) * scale - 10,
       y:
-        (entry.location.point[1] - box[1]) * scale -
-        27,
+        (
+          entry.location.point[1] -
+          box[1]
+        ) * scale - 27,
       w: 20,
       h: 29,
     }));
@@ -973,9 +1374,14 @@ function MapPanel({
     const result: Label[] = [];
 
     for (const entry of candidates) {
-      const [gx, gy] = entry.location.point;
-      const px = (gx - box[0]) * scale;
-      const py = (gy - box[1]) * scale;
+      const [gx, gy] =
+        entry.location.point;
+
+      const px =
+        (gx - box[0]) * scale;
+
+      const py =
+        (gy - box[1]) * scale;
 
       if (
         px < 0 ||
@@ -994,14 +1400,18 @@ function MapPanel({
         : entry.church.name;
 
       const isCaldas =
-        entry.church.id === 'caldas-da-rainha';
+        entry.church.id ===
+        'caldas-da-rainha';
 
       const font = Math.min(
         11,
-        (width - 12) / (text.length * 0.64 + 1)
+        (width - 12) /
+          (text.length * 0.64 + 1)
       );
 
-      const w = text.length * font * 0.64 + 4;
+      const w =
+        text.length * font * 0.64 + 4;
+
       const h = font + 6;
 
       const offsets = [
@@ -1021,14 +1431,22 @@ function MapPanel({
         let left =
           px +
           offset.dx -
-          (offset.anchor === 'end' ? w : 0);
+          (
+            offset.anchor === 'end'
+              ? w
+              : 0
+          );
 
-        const top = py + offset.dy - h / 2;
+        const top =
+          py + offset.dy - h / 2;
 
         if (isCaldas) {
           left = Math.max(
             4,
-            Math.min(width - w - 4, left)
+            Math.min(
+              width - w - 4,
+              left
+            )
           );
         }
 
@@ -1043,16 +1461,21 @@ function MapPanel({
 
         const collides = occupied.some(
           item =>
-            left < item.x + item.w + 4 &&
-            left + w + 4 > item.x &&
-            top < item.y + item.h + 3 &&
-            top + h + 3 > item.y
+            left <
+              item.x + item.w + 4 &&
+            left + w + 4 >
+              item.x &&
+            top <
+              item.y + item.h + 3 &&
+            top + h + 3 >
+              item.y
         );
 
         if (
           collides &&
           !isCaldas &&
-          entry.church.id !== selectedId
+          entry.church.id !==
+            selectedId
         ) {
           continue;
         }
@@ -1067,8 +1490,12 @@ function MapPanel({
           text,
           font,
           anchor: offset.anchor,
-          x: box[0] + textX / scale,
-          y: gy + offset.dy / scale,
+          x:
+            box[0] +
+            textX / scale,
+          y:
+            gy +
+            offset.dy / scale,
         });
 
         occupied.push({
@@ -1100,7 +1527,11 @@ function MapPanel({
       <div
         className={
           'map-svg-frame' +
-          (camera.interacting ? ' is-interacting' : '')
+          (
+            camera.interacting
+              ? ' is-interacting'
+              : ''
+          )
         }
       >
         <svg
@@ -1110,16 +1541,22 @@ function MapPanel({
           tabIndex={0}
           aria-labelledby={titleId}
           preserveAspectRatio="xMidYMid meet"
-          onPointerLeave={() => onHover(null)}
+          onPointerLeave={() =>
+            onHover(null)
+          }
           {...camera.handlers}
           onKeyDown={event => {
             if (
-              event.target !== event.currentTarget
+              event.target !==
+              event.currentTarget
             ) {
               return;
             }
 
-            const steps: Record<string, number[]> = {
+            const steps: Record<
+              string,
+              number[]
+            > = {
               ArrowLeft: [-1, 0],
               ArrowRight: [1, 0],
               ArrowUp: [0, -1],
@@ -1146,17 +1583,25 @@ function MapPanel({
             }
 
             if (event.key === '-') {
-              camera.zoomBy(1 / .65);
+              camera.zoomBy(
+                1 / .65
+              );
             }
 
-            if (event.key === 'Home') {
+            if (
+              event.key === 'Home'
+            ) {
               camera.reset();
             }
 
-            const step = steps[event.key];
+            const step =
+              steps[event.key];
 
             if (step) {
-              camera.pan(step[0], step[1]);
+              camera.pan(
+                step[0],
+                step[1]
+              );
             }
           }}
         >
@@ -1167,7 +1612,7 @@ function MapPanel({
           <desc>
             Marcadores numerados nas localizações das igrejas.
             Só as zonas com igreja ficam vermelhas ao passar o rato.
-            Arraste com um dedo e use dois dedos para ampliar ou reduzir.
+            Use um dedo para percorrer a página e dois dedos para mover, ampliar ou reduzir o mapa.
             Também pode usar os botões de zoom ou as setas do teclado.
           </desc>
 
@@ -1176,16 +1621,22 @@ function MapPanel({
           <g className="map-church-pins">
             {list.map(entry => {
               const zone =
-                churchZones.get(entry.church.id) || '';
+                churchZones.get(
+                  entry.church.id
+                ) || '';
 
               return (
                 <g
                   key={entry.church.id}
                   className="church-map-pin"
-                  data-church={entry.church.id}
+                  data-church={
+                    entry.church.id
+                  }
                   transform={
                     'translate(' +
-                    entry.location.point.join(' ') +
+                    entry.location.point.join(
+                      ' '
+                    ) +
                     ') scale(' +
                     pinScale +
                     ')'
@@ -1193,7 +1644,8 @@ function MapPanel({
                   role="button"
                   tabIndex={0}
                   aria-pressed={
-                    selectedId === entry.church.id
+                    selectedId ===
+                    entry.church.id
                   }
                   aria-label={
                     'Selecionar igreja ' +
@@ -1201,26 +1653,36 @@ function MapPanel({
                   }
                   onClick={event => {
                     event.stopPropagation();
-                    choose(entry.church.id);
+                    choose(
+                      entry.church.id
+                    );
                   }}
                   onKeyDown={event => {
                     if (
-                      event.key === 'Enter' ||
+                      event.key ===
+                        'Enter' ||
                       event.key === ' '
                     ) {
                       event.preventDefault();
                       event.stopPropagation();
-                      onSelect(entry.church.id);
+                      onSelect(
+                        entry.church.id
+                      );
                     }
                   }}
-                  onPointerEnter={event => {
-                    if (
-                      event.pointerType === 'mouse'
-                    ) {
-                      onHover(zone);
+                  onPointerEnter={
+                    event => {
+                      if (
+                        event.pointerType ===
+                        'mouse'
+                      ) {
+                        onHover(zone);
+                      }
                     }
-                  }}
-                  onPointerLeave={() => onHover(null)}
+                  }
+                  onPointerLeave={() =>
+                    onHover(null)
+                  }
                 >
                   <title>
                     {entry.church.name}
@@ -1248,7 +1710,11 @@ function MapPanel({
                     y="-30.1"
                     textAnchor="middle"
                   >
-                    {entries.indexOf(entry) + 1}
+                    {
+                      entries.indexOf(
+                        entry
+                      ) + 1
+                    }
                   </text>
                 </g>
               );
@@ -1263,12 +1729,20 @@ function MapPanel({
               {labels.map(label => (
                 <text
                   key={label.id}
-                  data-label={label.text}
-                  data-label-for={label.id}
+                  data-label={
+                    label.text
+                  }
+                  data-label-for={
+                    label.id
+                  }
                   x={label.x}
                   y={label.y}
-                  fontSize={label.font / scale}
-                  textAnchor={label.anchor}
+                  fontSize={
+                    label.font / scale
+                  }
+                  textAnchor={
+                    label.anchor
+                  }
                 >
                   {label.text}
                 </text>
@@ -1283,8 +1757,12 @@ function MapPanel({
         >
           <button
             type="button"
-            onClick={() => camera.zoomBy(.65)}
-            disabled={zoom >= MAX_ZOOM - .01}
+            onClick={() =>
+              camera.zoomBy(.65)
+            }
+            disabled={
+              zoom >= MAX_ZOOM - .01
+            }
             aria-label="Ampliar Portugal continental"
             title="Ampliar"
           >
@@ -1293,7 +1771,9 @@ function MapPanel({
 
           <button
             type="button"
-            onClick={() => camera.zoomBy(1 / .65)}
+            onClick={() =>
+              camera.zoomBy(1 / .65)
+            }
             disabled={zoom <= 1.01}
             aria-label="Reduzir Portugal continental"
             title="Reduzir"
@@ -1303,7 +1783,9 @@ function MapPanel({
 
           <button
             type="button"
-            onClick={() => camera.reset()}
+            onClick={() =>
+              camera.reset()
+            }
             aria-label="Repor vista de Portugal continental"
             title="Repor vista"
           >
@@ -1322,8 +1804,16 @@ function MapPanel({
         </div>
 
         <span className="map-drag-note">
+          <span className="map-gesture-desktop">
+            Arraste para explorar
+          </span>
+
+          <span className="map-gesture-touch">
+            Use dois dedos para explorar
+          </span>
+
           {
-            'Arraste para explorar · ' +
+            ' · ' +
             zoom.toFixed(1) +
             '×'
           }
@@ -1338,45 +1828,67 @@ export default function ChurchMap({
 }: {
   visibleChurchIds?: string[];
 }) {
-  const [selectedId, setSelectedId] =
-    useState<string | null>(null);
+  const [
+    selectedId,
+    setSelectedId,
+  ] = useState<string | null>(null);
 
-  const [hoveredZone, setHoveredZone] =
-    useState<string | null>(null);
+  const [
+    hoveredZone,
+    setHoveredZone,
+  ] = useState<string | null>(null);
 
-  const [showNames, setShowNames] = useState(true);
+  const [
+    showNames,
+    setShowNames,
+  ] = useState(true);
 
-  const [focusRequest, setFocusRequest] =
-    useState<FocusRequest | null>(null);
+  const [
+    focusRequest,
+    setFocusRequest,
+  ] = useState<FocusRequest | null>(null);
 
-  const mapTop = useRef<HTMLDivElement>(null);
+  const mapTop =
+    useRef<HTMLDivElement>(null);
+
   const focusSerial = useRef(0);
   const titleId = useId();
 
   const filterKey =
     visibleChurchIds === undefined
       ? '__all__'
-      : [...visibleChurchIds].sort().join('|');
+      : [...visibleChurchIds]
+          .sort()
+          .join('|');
 
   const visibleIds = useMemo(
-    () => new Set(
-      visibleChurchIds ??
-      churches.map(item => item.id)
-    ),
+    () =>
+      new Set(
+        visibleChurchIds ??
+        churches.map(
+          item => item.id
+        )
+      ),
     [filterKey]
   );
 
   const list = entries.filter(
-    entry => visibleIds.has(entry.church.id)
+    entry =>
+      visibleIds.has(
+        entry.church.id
+      )
   );
 
   const selected = list.find(
-    entry => entry.church.id === selectedId
+    entry =>
+      entry.church.id ===
+      selectedId
   );
 
   const hovered = municipalities.find(
     item =>
-      item.id === hoveredZone?.split(':')[0]
+      item.id ===
+      hoveredZone?.split(':')[0]
   );
 
   useEffect(() => {
@@ -1384,42 +1896,52 @@ export default function ChurchMap({
 
     setSelectedId(
       current =>
-        current && visibleIds.has(current)
+        current &&
+        visibleIds.has(current)
           ? current
           : null
     );
   }, [filterKey]);
 
-  const selectChurch = useCallback((
-    id: string,
-    focus = true
-  ) => {
-    if (!visibleIds.has(id)) return;
+  const selectChurch = useCallback(
+    (
+      id: string,
+      focus = true
+    ) => {
+      if (!visibleIds.has(id)) {
+        return;
+      }
 
-    setSelectedId(id);
-    setHoveredZone(null);
+      setSelectedId(id);
+      setHoveredZone(null);
 
-    if (!focus) return;
+      if (!focus) return;
 
-    setFocusRequest({
-      churchId: id,
-      serial: ++focusSerial.current,
-    });
-
-    if (window.innerWidth < 900) {
-      mapTop.current?.scrollIntoView({
-        behavior: window.matchMedia(
-          '(prefers-reduced-motion: reduce)'
-        ).matches
-          ? 'auto'
-          : 'smooth',
-        block: 'start',
+      setFocusRequest({
+        churchId: id,
+        serial:
+          ++focusSerial.current,
       });
-    }
-  }, [visibleIds]);
+
+      if (
+        window.innerWidth < 900
+      ) {
+        mapTop.current?.scrollIntoView({
+          behavior: window.matchMedia(
+            '(prefers-reduced-motion: reduce)'
+          ).matches
+            ? 'auto'
+            : 'smooth',
+          block: 'start',
+        });
+      }
+    },
+    [visibleIds]
+  );
 
   const selectFromMap = useCallback(
-    (id: string) => selectChurch(id, false),
+    (id: string) =>
+      selectChurch(id, false),
     [selectChurch]
   );
 
@@ -1455,7 +1977,9 @@ export default function ChurchMap({
                 type="checkbox"
                 checked={showNames}
                 onChange={event =>
-                  setShowNames(event.target.checked)
+                  setShowNames(
+                    event.target.checked
+                  )
                 }
               />
               Nomes das localidades
@@ -1466,16 +1990,26 @@ export default function ChurchMap({
             <div className="church-map-atlas">
               <div className="map-atlas-top">
                 <span>
-                  <strong>PORTUGAL</strong>
-                  <small>Limites por concelho</small>
+                  <strong>
+                    PORTUGAL
+                  </strong>
+                  <small>
+                    Limites por concelho
+                  </small>
                 </span>
 
                 <div className="map-city-shortcuts">
                   <button
                     type="button"
-                    disabled={!visibleIds.has('lisboa')}
+                    disabled={
+                      !visibleIds.has(
+                        'lisboa'
+                      )
+                    }
                     onClick={() =>
-                      selectChurch('lisboa')
+                      selectChurch(
+                        'lisboa'
+                      )
                     }
                   >
                     Detalhar Lisboa
@@ -1483,9 +2017,15 @@ export default function ChurchMap({
 
                   <button
                     type="button"
-                    disabled={!visibleIds.has('porto')}
+                    disabled={
+                      !visibleIds.has(
+                        'porto'
+                      )
+                    }
                     onClick={() =>
-                      selectChurch('porto')
+                      selectChurch(
+                        'porto'
+                      )
                     }
                   >
                     Detalhar Porto
@@ -1524,7 +2064,7 @@ export default function ChurchMap({
                   {
                     hovered
                       ? 'Zona com igreja no diretório'
-                      : 'Arraste para navegar. Use dois dedos ou Ctrl + roda do rato para ampliar.'
+                      : 'No telemóvel: um dedo para descer a página e dois dedos para mover e ampliar o mapa.'
                   }
                 </span>
               </div>
@@ -1566,10 +2106,14 @@ export default function ChurchMap({
                   Legenda
                 </span>
 
-                <h3>As nossas igrejas</h3>
+                <h3>
+                  As nossas igrejas
+                </h3>
 
                 <p>
-                  <strong>{list.length}</strong>
+                  <strong>
+                    {list.length}
+                  </strong>
                   {' '}
                   {
                     list.length === 1
@@ -1577,7 +2121,8 @@ export default function ChurchMap({
                       : 'igrejas disponíveis'
                   }
                   {
-                    visibleChurchIds !== undefined &&
+                    visibleChurchIds !==
+                      undefined &&
                     ' nos filtros atuais'
                   }
                 </p>
@@ -1591,20 +2136,28 @@ export default function ChurchMap({
                   <div className="map-selected-top">
                     <span className="map-legend-number">
                       {
-                        entries.indexOf(selected) + 1
+                        entries.indexOf(
+                          selected
+                        ) + 1
                       }
                     </span>
 
-                    <span>Igreja selecionada</span>
+                    <span>
+                      Igreja selecionada
+                    </span>
                   </div>
 
-                  <h4>{selected.church.name}</h4>
+                  <h4>
+                    {selected.church.name}
+                  </h4>
 
-                  <p>{selected.church.address}</p>
+                  <p>
+                    {selected.church.address}
+                  </p>
 
                   <a
-                    href={googleMaps(
-                      selected.church.address
+                    href={churchMapsUrl(
+                      selected.church
                     )}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -1630,7 +2183,8 @@ export default function ChurchMap({
                   <li
                     key={entry.church.id}
                     className={
-                      selectedId === entry.church.id
+                      selectedId ===
+                      entry.church.id
                         ? 'is-selected'
                         : ''
                     }
@@ -1639,15 +2193,20 @@ export default function ChurchMap({
                       type="button"
                       className="map-legend-choice"
                       aria-pressed={
-                        selectedId === entry.church.id
+                        selectedId ===
+                        entry.church.id
                       }
                       onClick={() =>
-                        selectChurch(entry.church.id)
+                        selectChurch(
+                          entry.church.id
+                        )
                       }
                     >
                       <span className="map-legend-number">
                         {
-                          entries.indexOf(entry) + 1
+                          entries.indexOf(
+                            entry
+                          ) + 1
                         }
                       </span>
 
@@ -1663,7 +2222,8 @@ export default function ChurchMap({
                             municipalities.find(
                               item =>
                                 item.id ===
-                                entry.location.municipalityId
+                                entry.location
+                                  .municipalityId
                             )?.name
                           }
                         </small>
@@ -1676,8 +2236,9 @@ export default function ChurchMap({
 
                     <a
                       className="map-legend-directions"
-                      href={googleMaps(
-                        entry.church.address
+                      href={churchMapsUrl(
+                        entry.church,
+                        'directions'
                       )}
                       target="_blank"
                       rel="noopener noreferrer"
